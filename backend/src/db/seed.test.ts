@@ -80,4 +80,3 @@ describe('determinism', () => {
     expect(d.applications.filter((a) => a.status === 'Rejected')).toHaveLength(305);
   });
 });
-});
