@@ -17,6 +17,8 @@ Repo: https://github.com/venkathub/conversational-data-analyst
    Server builds parameterised SQL ──► read-only SQLite ──► result + chosen visualisation
 ```
 
+**Demo video:** [demo/conversational-data-analyst-demo-h264.mp4](demo/conversational-data-analyst-demo-h264.mp4) (about 2 minutes, recorded against the live Anthropic provider).
+
 ## Setup
 
 Requirements: Node.js and npm. Developed and tested on Node 24 / npm 11; older versions (Node 20+) are expected to work but were not tested.
