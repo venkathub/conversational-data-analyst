@@ -66,15 +66,15 @@ describe('AnthropicProvider', () => {
   it('maps timeouts, rate limits and API errors without leaking details', async () => {
     const cases: Array<[unknown, string]> = [
       [new Anthropic.APIConnectionTimeoutError(), 'PROVIDER_TIMEOUT'],
-      [Anthropic.APIError.generate(429, { error: { message: 'sk-ant-secret' } }, 'rate', {}), 'RATE_LIMITED'],
-      [Anthropic.APIError.generate(401, { error: { message: 'sk-ant-secret' } }, 'bad key sk-ant-secret', {}), 'PROVIDER_ERROR'],
-      [new Error('socket hang up with sk-ant-secret'), 'PROVIDER_ERROR'],
+      [Anthropic.APIError.generate(429, { error: { message: 'FAKE-SECRET' } }, 'rate', {}), 'RATE_LIMITED'],
+      [Anthropic.APIError.generate(401, { error: { message: 'FAKE-SECRET' } }, 'bad key FAKE-SECRET', {}), 'PROVIDER_ERROR'],
+      [new Error('socket hang up with FAKE-SECRET'), 'PROVIDER_ERROR'],
     ];
     for (const [err, code] of cases) {
       const { provider } = providerWith(async () => { throw err; });
       const e = await failure(provider);
       expect(e.code).toBe(code);
-      expect(e.message).not.toMatch(/sk-ant|secret|socket/);
+      expect(e.message).not.toMatch(/FAKE|secret|socket/);
     }
   });
 });

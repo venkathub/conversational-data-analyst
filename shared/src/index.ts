@@ -116,3 +116,25 @@ export const EXAMPLE_QUESTIONS = [
   'Compare retail and SME onboarding volumes',
   'Show the top five customers by transaction value',
 ] as const;
+
+/** Formats a cell for display and copying. Percent values are fractions; currency is INR. */
+export function formatValue(value: CellValue, format: ColumnFormat): string {
+  if (value === null || value === undefined) return '';
+  if (typeof value === 'string') return value;
+  switch (format) {
+    case 'integer':
+      return value.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+    case 'currency':
+      return value.toLocaleString('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        maximumFractionDigits: Math.abs(value) >= 1000 ? 0 : 2,
+      });
+    case 'percent':
+      return `${(value * 100).toFixed(1)}%`;
+    case 'decimal':
+      return value.toLocaleString('en-IN', { maximumFractionDigits: 1 });
+    default:
+      return String(value);
+  }
+}
