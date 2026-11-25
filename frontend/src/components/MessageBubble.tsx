@@ -1,4 +1,5 @@
 import type { ChatMessage } from './ChatShell';
+import { ResultView } from './ResultView';
 
 interface Props {
   message: ChatMessage;
@@ -24,7 +25,7 @@ export function MessageBubble({ message }: Props) {
             Analysing your question<span className="dots" aria-hidden="true" />
           </p>
         )}
-        {response?.ok === true && <p>{response.answer}</p>}
+        {response?.ok === true && <ResultView response={response} />}
         {response?.ok === false && <p className="error-text">{response.error.message}</p>}
       </div>
     </div>
