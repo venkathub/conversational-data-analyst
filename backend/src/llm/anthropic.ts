@@ -97,7 +97,6 @@ export class AnthropicProvider implements LlmProvider {
       response = await this.client.messages.create({
         model: this.model,
         max_tokens: 1024,
-        temperature: 0,
         system: systemPrompt(),
         tools: TOOLS,
         tool_choice: { type: 'any' },
@@ -128,7 +127,7 @@ export function mapProviderError(err: unknown): AppError {
     return new AppError('RATE_LIMITED', 'The AI service is busy right now. Please try again in a moment.');
   }
   if (err instanceof Anthropic.APIError) {
-    console.error(`Anthropic API error, status ${err.status ?? 'none'}`);
+    console.error(`Anthropic API error, status ${err.status ?? 'none'}: ${err.message.slice(0, 300)}`);
     return new AppError('PROVIDER_ERROR', 'The AI service is unavailable. Please try again later.');
   }
   console.error('Unexpected provider error');
