@@ -74,3 +74,7 @@ th, td { padding: 6px 12px; border-bottom: 1px solid var(--border); text-align: 
 th { position: sticky; top: 0; background: #f7f8fb; font-weight: 600; }
 .num { text-align: right; font-variant-numeric: tabular-nums; }
 pre { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px; overflow-x: auto; font-size: 12px; }
+
+.copy-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.copy-btn { border: 1px solid var(--border); background: #fff; border-radius: 6px; padding: 4px 10px; font: inherit; font-size: 13px; cursor: pointer; color: var(--text); }
+.copy-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
