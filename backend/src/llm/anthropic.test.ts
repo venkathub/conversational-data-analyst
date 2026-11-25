@@ -50,6 +50,8 @@ describe('AnthropicProvider', () => {
     expect(params).not.toHaveProperty('temperature');
     expect(String(params.system)).not.toContain('Ignore previous');
     expect(String(params.system)).toContain('You never write SQL');
+    // Live testing showed the model sometimes left the default limit of 50, cutting a 72-row trend chart short.
+    expect(String(params.system)).toContain('Always set limit');
   });
 
   it('does not clean up a malformed plan: the validator rejects it', async () => {
