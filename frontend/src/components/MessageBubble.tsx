@@ -1,4 +1,5 @@
 import type { ChatMessage } from './ChatShell';
+import { ErrorCard } from './ErrorCard';
 import { ResultView } from './ResultView';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
   busy: boolean;
 }
 
-export function MessageBubble({ message }: Props) {
+export function MessageBubble({ message, onAsk, busy }: Props) {
   if (message.role === 'user') {
     return (
       <div className="row user">
@@ -26,7 +27,7 @@ export function MessageBubble({ message }: Props) {
           </p>
         )}
         {response?.ok === true && <ResultView response={response} />}
-        {response?.ok === false && <p className="error-text">{response.error.message}</p>}
+        {response?.ok === false && <ErrorCard failure={response} question={message.question} busy={busy} onAsk={onAsk} />}
       </div>
     </div>
   );

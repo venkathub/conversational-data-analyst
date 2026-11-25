@@ -78,3 +78,11 @@ pre { background: #fff; border: 1px solid var(--border); border-radius: 8px; pad
 .copy-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 .copy-btn { border: 1px solid var(--border); background: #fff; border-radius: 6px; padding: 4px 10px; font: inherit; font-size: 13px; cursor: pointer; color: var(--text); }
 .copy-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+
+.error-card { border-left: 4px solid var(--danger); background: var(--danger-soft); border-radius: 6px; padding: 10px 14px; }
+.error-title { margin: 0 0 2px; font-weight: 700; color: var(--danger); }
+.error-message { margin: 0 0 8px; }
+.retry-btn { border: 1px solid var(--danger); background: #fff; color: var(--danger); border-radius: 6px; padding: 4px 12px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; margin-bottom: 8px; }
+.retry-btn:disabled { opacity: 0.5; cursor: default; }
+.chips.left { justify-content: flex-start; }
+.chips.left .chip { font-size: 13px; padding: 6px 12px; }
