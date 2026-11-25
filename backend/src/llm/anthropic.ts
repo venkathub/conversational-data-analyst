@@ -99,7 +99,9 @@ export class AnthropicProvider implements LlmProvider {
         max_tokens: 1024,
         system: systemPrompt(),
         tools: TOOLS,
-        tool_choice: { type: 'any' },
+        // 'auto', not 'any'/'tool': some current models reject forced tool choice. The prompt requires a tool call,
+        // and a reply without one is mapped to PROVIDER_ERROR below.
+        tool_choice: { type: 'auto' },
         messages: [{ role: 'user', content: question }],
       });
     } catch (err) {
